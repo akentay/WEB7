@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment #7 — jQuery Basics | Aida Kentay</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <h1>Assignment #7 — jQuery (Selectors, Effects, Animations)</h1>
+  <h3>Student: Aida Kentay | Group: SE-2428</h3>
+
+  <hr>
+
+  <!-- ===== Part 1: jQuery Selectors & CSS ===== -->
+  <section id="selectors">
+    <h2>Part 1: Selectors & CSS</h2>
+    <p id="text">This text will change using jQuery!</p>
+    <button id="changeText">Change Text</button>
+    <button id="changeColor">Change Color</button>
+  </section>
+
+  <hr>
+
+  <!-- ===== Part 2: Effects ===== -->
+  <section id="effects">
+    <h2>Part 2: jQuery Effects</h2>
+    <p id="effectText">Watch me appear and disappear!</p>
+    <button id="hideBtn">Hide</button>
+    <button id="showBtn">Show</button>
+    <button id="toggleBtn">Toggle</button>
+  </section>
+
+  <hr>
+
+  <!-- ===== Part 3: DOM Manipulation ===== -->
+  <section id="dom">
+    <h2>Part 3: DOM Manipulation</h2>
+    <ul id="itemList">
+      <li>Item 1</li>
+      <li>Item 2</li>
+    </ul>
+    <button id="addItem">Add Item</button>
+    <button id="removeItem">Remove Item</button>
+
+    <h3>Change Image Source</h3>
+    <img id="mainImg" src="https://avatars.mds.yandex.net/i?id=cde7c8702821550e02606f10f5f9250b_l-5232491-images-thumbs&n=13" width="150">
+    <br>
+    <button id="changeImg">Change Image</button>
+  </section>
+
+  <hr>
+
+  <!-- ===== Part 4: Animations ===== -->
+  <section id="animation">
+    <h2>Part 4: Animation</h2>
+    <div id="box"></div>
+    <button id="animateBtn">Animate Box</button>
+  </section>
+
+  <hr>
+
+  <!-- ===== Part 5: Mini Project — Image Gallery ===== -->
+  <section id="gallery">
+    <h2>Part 5: Mini Project — Image Gallery</h2>
+    <div class="gallery">
+      <img src="https://wallpapers.com/images/hd/kitten-cat-pictures-vg87etfdpig6t2mo.jpg" class="thumb" sizes="200px">
+      <img src="https://cs9.pikabu.ru/post_img/2017/10/24/0/og_og_150879265624096088.jpg" class="thumb" sizes="200px">
+      <img src="https://wallpapers.com/images/hd/cute-kitty-giving-high-five-hw0aiizn05mlnt3s.jpg" class="thumb" sizes="200px">
+    </div>
+    <div id="preview">
+      <p>Click any image to view larger!</p>
+      <img id="largeImg" src="" style="display:none;">
+    </div>
+  </section>
+
+  <script>
+    // ========== Task 0: jQuery Setup ==========
+    $(document).ready(function() {
+      console.log("✅ jQuery is ready!");
+
+      // ===== Part 1: Selectors & CSS =====
+      $("#changeText").click(function() {
+        $("#text").text("Text changed successfully with jQuery!");
+      });
+      $("#changeColor").click(function() {
+        $("#text").css("color", "blue");
+      });
+
+      // ===== Part 2: Effects =====
+      $("#hideBtn").click(function() {
+        $("#effectText").hide();
+      });
+      $("#showBtn").click(function() {
+        $("#effectText").show();
+      });
+      $("#toggleBtn").click(function() {
+        $("#effectText").toggle();
+      });
+
+      // ===== Part 3: DOM Manipulation =====
+      $("#addItem").click(function() {
+        $("#itemList").append("<li>New Item</li>");
+      });
+      $("#removeItem").click(function() {
+        $("#itemList li:last").remove();
+      });
+
+      $("#changeImg").click(function() {
+        $("#mainImg").attr("src", "https://i.pinimg.com/originals/7e/64/7c/7e647c8f7403f87a51d4314cc85883b5.jpg");
+      });
+
+      // ===== Part 4: Animation =====
+      $("#animateBtn").click(function() {
+        $("#box").animate({
+          left: "200px",
+          width: "150px",
+          height: "150px",
+          opacity: 0.5
+        }, 1000).animate({
+          left: "0",
+          width: "100px",
+          height: "100px",
+          opacity: 1
+        }, 1000);
+      });
+
+      // ===== Part 5: Mini Project — Image Gallery =====
+      $(".thumb").click(function() {
+        let src = $(this).attr("src");
+        $("#largeImg").attr("src", src).fadeIn();
+      });
+    });
+  </script>
+
+</body>
+</html>
